@@ -2,9 +2,7 @@
 \usetheme{Warsaw}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
-\usepackage{svg}
-\setsvg{inkscape = inkscape -z -D}
+\usepackage{mathtools}
 
 
 \title[DNNLM]{Deep Neural Network Language Models}
@@ -12,7 +10,13 @@
 \institute{Shanghai JiaoTong University}
 \date{\today}
 
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
+\setbeamercolor*{block title example}{fg=blue!150, bg= blue!10}
+\setbeamercolor*{block body example}{fg= black, bg= blue!5}
+
 \addtobeamertemplate{footline}{\insertframenumber/\inserttotalframenumber}
+
 
 \begin{document}
 \begin{frame}[plain]
@@ -35,13 +39,14 @@
 	\end{quote}
 \end{frame}
 
-\begin{frame}{What is a Neural Network?}
-	\begin{figure}[!ht]
-		\centering
-		\rule{0cm}{0cm}
-		\includesvg[width = 0.5\textwidth, svgpath=images/]{ANN}
-		\caption{A neural network}
-	\end{figure}
+\end{frame}
+\begin{frame}{What is a Neural Network ?}
+\begin{figure}[!ht]
+	\centering
+	\rule{0cm}{0cm}
+    \includegraphics[width=0.5\linewidth]{./images/ANN.png}
+	\caption{A neural network}
+\end{figure}
 \end{frame}
 
 \begin{frame}{What is a Neural Network?}
@@ -64,6 +69,36 @@
 		\includegraphics[scale=0.28]{images/sigmoid.png}
 		\includegraphics[scale=0.28]{images/tanh.png}
 	\end{center}
+
+\begin{frame}{Feed-forward NNLM architecture}
+
+\begin{figure}[!htb]\centering
+    \includegraphics[width=0.8\linewidth]{./images/architecture.png}
+    \caption{Feed-forward neural network language model architecture}\label{diagram:architecture}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Feed-forward NNLM architecture}
+
+\begin{exampleblock}{Neural network's operations}
+\begin{equation}
+\left.\begin{aligned}
+    &d_j = tanh(\sum\limits_{l=1}^{\text{\tiny{$(n-1) \times P$}}}{M_{jl} \times c_l + b_j}) \qquad \text{\small{$\forall j = 1, \ldots, H$}}&\\
+    &o_i = \sum\limits_{j=1}^{H}{V_{ij} \times d_j + k_i} \qquad \text{\small{$\forall i = 1, \ldots, N$}}&\\
+    &p_i = \frac{exp(o_i)}{\sum\limits_{r=1}^{N}{exp(o_r)}} = P(w_j = i | h_j)&\\
+\end{aligned}\right.
+\end{equation}
+\end{exampleblock}
+
+where $M$ and $V$ are the \textbf{weight matrices} between the projection and hidden layers and between the hidden and output layers \\and $b_j$ and $k_i$ are the hidden and output layer \textbf{biases} respectively.
+
+\end{frame}
+
+
+\begin{frame}{Feed-forward Deep NNLM architecture}
+	The DNNLM has the same architecture as a NNLM but with \textbf{several hidden layers of nonlinearities}.
 \end{frame}
 
 \end{document}
