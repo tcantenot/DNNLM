@@ -70,6 +70,16 @@
 	\end{center}
 \end{frame}
 
+\begin{frame}{Why Neural Network Language Modeling?}
+	The state of the art uses n-grams
+	\begin{itemize}
+		\item Data spareness requires smoothing to avoid small or zero probabilities for some valid word sequences
+		\item Discrete nature $\rightarrow$ generalization is hard. No notion of word similarity
+	\end{itemize}
+	\vspace{5mm}
+	The neural network language model embeds words in a continuous space. The aim is to use appropriate data for training so that similar words are close in the continuous space, thus obtaining better results for unseen n-grams.
+\end{frame}
+
 \begin{frame}{Feed-forward NNLM architecture}
 
 \begin{figure}[!htb]\centering
