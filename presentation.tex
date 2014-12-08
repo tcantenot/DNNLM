@@ -108,7 +108,44 @@ where $M$ and $V$ are the \textbf{weight matrices} between the projection and hi
 
 
 \begin{frame}{Feed-forward Deep NNLM architecture}
-	The DNNLM has the same architecture as a NNLM but with \textbf{several hidden layers of nonlinearities}.
+
+The DNNLM has the same architecture as a NNLM but with \textbf{several hidden layers of nonlinearities}.
+\newline
+\newline
+In the acoustic modeling community, DNNs have proven to be competitive with the well-established Gaussian mixture model:
+\newline
+\begin{center}
+\textbf{How well DNNs can perform in language modeling?}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Experimental setup}
+
+\textbf{Baseline ASR system}
+\newline
+\newline
+900K sentences (23.5M words) from 1993 WSJ text with verbalized punctuation from the CSR-III: \\
+\begin{itemize}
+    \item 2,439 unique utterances (46,888 words) as \textit{evaluation set}.
+    \item 977 utterances (18,279 words) as \textit{development set}.
+    \item The rest as \textit{training set}.\\
+\end{itemize}
+
+Comparison with the state-of-the-art \textbf{model M language model}.
+\newline
+\newline
+After rescoring, the \textbf{baseline WER} is $20.7\%$ on the held-out set and $22.3\%$ on the test set.
+
+\end{frame}
+
+\begin{frame}{Experimental setup}
+
+\textbf{DNN language model set-up}
+\newline
+\newline
+
 \end{frame}
 
 \end{document}
