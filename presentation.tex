@@ -4,6 +4,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{mathtools}
 
+\usepackage{svg}
+\setsvg{inkscape = inkscape -z -D}
+
+
 \title[DNNLM]{Deep Neural Network Language Models}
 \author[A. Peyrard, T. Cantenot]{Alex Peyrard, Thierry Cantenot}
 \institute{Shanghai JiaoTong University}
@@ -32,15 +36,30 @@ Yorktown Heights, NY, 10598, USA\\
 
 \end{frame}
 
+\begin{frame}{What is a language model ?}
+\begin{quote}
+A statistical language model assigns a probability to a sequence of m words $P(w_1,\ldots,w_m)$ by means of a probability distribution. \\ \flushright\emph{Wikipedia -- Language Models}
+\end{quote}
+\end{frame}
+\begin{frame}{What is a Neural Network ?}
+\begin{figure}[!ht]
+	\centering
+	\rule{0cm}{0cm}
+	\includesvg[width = 0.5\textwidth, svgpath=images/]{ANN}
+	\caption{A neural network}
+\end{figure}
+\end{frame}
+
 
 \begin{frame}{Feed-forward NNLM architecture}
 
-    \begin{figure}[!htb]\centering
-        \includegraphics[width=0.8\linewidth]{./images/architecture.png}
-        \caption{Feed-forward neural network language model architecture}\label{diagram:architecture}
-    \end{figure}
+\begin{figure}[!htb]\centering
+    \includegraphics[width=0.8\linewidth]{./images/architecture.png}
+    \caption{Feed-forward neural network language model architecture}\label{diagram:architecture}
+\end{figure}
 
 \end{frame}
+
 
 \begin{frame}{Feed-forward NNLM architecture}
 
@@ -56,8 +75,8 @@ Yorktown Heights, NY, 10598, USA\\
 
 where $M$ and $V$ are the \textbf{weight matrices} between the projection and hidden layers and between the hidden and output layers \\and $b_j$ and $k_i$ are the hidden and output layer \textbf{biases} respectively.
 
-
 \end{frame}
+
 
 \begin{frame}{Feed-forward Deep NNLM architecture}
 	The DNNLM has the same architecture as a NNLM but with \textbf{several hidden layers of nonlinearities}.
