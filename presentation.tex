@@ -3,6 +3,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\usepackage{svg}
+\setsvg{inkscape = inkscape -z -D}
+
+
 \title[DNNLM]{Deep Neural Network Language Models}
 \author[A. Peyrard, T. Cantenot]{Alex Peyrard, Thierry Cantenot}
 \institute{Shanghai JiaoTong University}
@@ -23,5 +27,13 @@ Yorktown Heights, NY, 10598, USA\\
 \{earisoy, tsainath, bedk, bhuvana\}@us.ibm.com
 \end{center}
 
+\end{frame}
+\begin{frame}
+\begin{figure}[!ht]
+	\centering
+	\rule{0cm}{0cm}
+	\includesvg[width = 0.5\textwidth, svgpath=images/]{ANN}
+	\caption{A neural network}
+\end{figure}
 \end{frame}
 \end{document}
