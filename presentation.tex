@@ -63,7 +63,7 @@
 \end{frame}
 
 \begin{frame}{Activation function}
-	The activation function often if the sigmoid or hyperbolic tangent function.
+	The activation function often is the sigmoid or hyperbolic tangent function.
 	\begin{center}
 		\includegraphics[scale=0.28]{images/sigmoid.png}
 		\includegraphics[scale=0.28]{images/tanh.png}
@@ -92,7 +92,22 @@
 \end{equation}
 \end{exampleblock}
 
-where $M$ and $V$ are the \textbf{weight matrices} between the projection and hidden layers and between the hidden and output layers \\and $b_j$ and $k_i$ are the hidden and output layer \textbf{biases} respectively.
+where $M$ and $V$ are the \textbf{weight matrices} between the projection and hidden layers and between the hidden and output layers, \\
+and $b_j$ and $k_i$ are the hidden and output layer \textbf{biases} respectively.
+
+\end{frame}
+
+\begin{frame}{Feed-forward NNLM architecture}
+
+
+Computational complexity of this model is dominated by $HxN $ multiplications at the output layer.
+\newline
+\newline
+$\rightarrow$ \textbf{shortlist with only the most frequent words in vocabulary} is used at output targets to reduce output layer complexity.
+\newline
+\newline
+Since NNLM distributes the probability mass only to target words, a background language model is used for smoothing.
+
 
 \end{frame}
 
@@ -111,7 +126,7 @@ In the acoustic modeling community, DNNs have proven to be competitive with the 
 \end{frame}
 
 
-\begin{frame}{Experimental setup}
+\begin{frame}{Experimental setup - \small{Baseline}}
 
 \textbf{Baseline ASR system}
 \newline
@@ -126,15 +141,43 @@ In the acoustic modeling community, DNNs have proven to be competitive with the 
 Comparison with the state-of-the-art \textbf{model M language model}.
 \newline
 \newline
-After rescoring, the \textbf{baseline WER} is $20.7\%$ on the held-out set and $22.3\%$ on the test set.
+After rescoring with a 4-gram language model trained on the same data, the \textbf{baseline WER} is $20.7\%$ on the held-out set and $22.3\%$ on the test set.
 
 \end{frame}
 
-\begin{frame}{Experimental setup}
+\begin{frame}{Experimental setup - \small{DNNLM}}
 
-\textbf{DNN language model set-up}
+\textbf{DNN language model setup}
 \newline
 \newline
+DNNLMs are trained on the baseline language model training text (900K sentences).
+\newline
+\newline
+The 10K most frequent words in the vocabulary are chosen as the output vocabulary ($96\%$ coverage of the test set).
+\newline
+\newline
+The probabilities for words outside the output vocabulary are smoothed using a 4-gram language model.
+\newline
+\newline
+\textbf{All DNN language models are 4-gram models}.
+\end{frame}
+
+\begin{frame}{Experimental setup - \small{DNNLM}}
+
+Experimentations using:
+\begin{itemize}
+	\item different projection layer sizes
+	\item different numbers of hidden layers (with same number of units)
+\end{itemize}
+
+\bigskip
+DNNLMs are \textbf{not pre-trained} (random initialization).
+\newline
+\newline
+The \textbf{cross-entropy} loss function is used with a \textbf{stochastic back-propagation} algorithm to train the model.
+\newline
+\newline
+The DNN language models are evaluated via rescoring using 4-gram DNN language models (lattice rescoring).
 
 \end{frame}
 
