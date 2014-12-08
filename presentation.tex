@@ -70,6 +70,16 @@
 	\end{center}
 \end{frame}
 
+\begin{frame}{Why Neural Network Language Modeling?}
+	The state of the art uses n-grams
+	\begin{itemize}
+		\item Data spareness requires smoothing to avoid small or zero probabilities for some valid word sequences
+		\item Discrete nature $\rightarrow$ generalization is hard. No notion of word similarity
+	\end{itemize}
+	\vspace{5mm}
+	The neural network language model embeds words in a continuous space. The aim is to use appropriate data for training so that similar words are close in the continuous space, thus obtaining better results for unseen n-grams.
+\end{frame}
+
 \begin{frame}{Feed-forward NNLM architecture}
 
 \begin{figure}[!htb]\centering
@@ -179,6 +189,54 @@ The \textbf{cross-entropy} loss function is used with a \textbf{stochastic back-
 \newline
 The DNN language models are evaluated via rescoring using 4-gram DNN language models (lattice rescoring).
 
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{figure}[!htb]
+		\centering
+	    \includegraphics[width=0.8\linewidth]{./images/results1.png}
+	    \caption{WER function of number of hidden layers}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{figure}[!htb]
+		\centering
+			\begin{minipage}{0.45\textwidth}
+				    \includegraphics[width=\linewidth]{./images/results2.png}
+			\end{minipage}
+			\hspace{5mm}
+			\begin{minipage}{0.45\textwidth}
+				    \includegraphics[width=\linewidth]{./images/results3.png}
+			\end{minipage}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Results}
+	\begin{figure}[!htb]
+		\centering
+			\begin{minipage}{0.45\textwidth}
+				    \includegraphics[width=\linewidth]{./images/results4.png}
+			\end{minipage}
+			\hspace{5mm}
+			\begin{minipage}{0.45\textwidth}
+				    \includegraphics[width=\linewidth]{./images/results5.png}
+			\end{minipage}
+		\caption{WER function of number of hidden layers}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conclusion}
+	\begin{itemize}
+		\item DNNLM show an improvement over shallow NNLM
+		\item DNNLM performances seem close to state of the art
+		\item DNNLM should be compared to RNNLM
+		\item Further research is needed
+		\begin{itemize}
+			\item Behavior with higher projection layer dimension is unclear
+			\item Better pre-training and training strategies could be found
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \end{document}
