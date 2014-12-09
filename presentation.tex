@@ -76,10 +76,10 @@
 \end{frame}
 
 \begin{frame}{Why Neural Network Language Modeling?}
-	The state of the art uses n-grams
+	The state of the art uses \textbf{n-grams}.
 	\begin{itemize}
-		\item \textbf{Data sparseness} requires smoothing to avoid small or zero probabilities for some valid word sequences
-		\item \textbf{Discrete nature} $\rightarrow$ generalization is hard. \textbf{No notion of word similarity}.
+		\item \textbf{Data sparseness} requires smoothing to avoid small or zero probabilities for some valid word sequences.
+		\item \textbf{Discrete nature} makes generalization hard. \\ $\rightarrow$ \textbf{no notion of word similarity}.
 	\end{itemize}
 	\vspace{5mm}
 	The neural network language model embeds words in a\textbf{ continuous space}. The aim is to use appropriate data for training so that similar words are close in the continuous space, thus obtaining \textbf{better results for unseen n-grams}.
@@ -170,9 +170,9 @@ After rescoring with a 4-gram language model trained on the same data, the \text
 DNNLMs are trained on the baseline language model training text (900K sentences).
 \newline
 \newline
-The 10K most frequent words in the vocabulary are chosen as the output vocabulary ($96\%$ coverage of the test set).
+The input vocabulary contains the same 20K words as the baseline model.
 \newline
-The input vocabulary contains the same 20K words as the baseline model	.
+The 10K most frequent words in the vocabulary are chosen as the output vocabulary ($96\%$ coverage of the test set).
 \newline
 \newline
 The probabilities for words outside the output vocabulary are smoothed using a 4-gram language model.
