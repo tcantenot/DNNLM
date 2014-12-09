@@ -25,8 +25,13 @@
 
 \begin{frame}{Introduction}
 	\begin{center}
-		Deep Neural Networks Language Models\\
-		Ebru Arısoy, Tara N. Sainath, Brian Kingsbury, Bhuvana Ramabhadran\\
+		\textbf{Deep Neural Networks Language Models}
+	\end{center}
+
+	\begin{center}
+		\textbf{\small{Ebru Arısoy, Tara N. Sainath, Brian Kingsbury, Bhuvana Ramabhadran}}
+	\end{center}
+	\begin{center}
 		IBM T.J. Watson Research Center\\
 		Yorktown Heights, NY, 10598, USA\\
 		\{earisoy, tsainath, bedk, bhuvana\}@us.ibm.com
@@ -73,11 +78,11 @@
 \begin{frame}{Why Neural Network Language Modeling?}
 	The state of the art uses n-grams
 	\begin{itemize}
-		\item Data spareness requires smoothing to avoid small or zero probabilities for some valid word sequences
-		\item Discrete nature $\rightarrow$ generalization is hard. No notion of word similarity
+		\item \textbf{Data sparseness} requires smoothing to avoid small or zero probabilities for some valid word sequences
+		\item \textbf{Discrete nature} $\rightarrow$ generalization is hard. \textbf{No notion of word similarity}.
 	\end{itemize}
 	\vspace{5mm}
-	The neural network language model embeds words in a continuous space. The aim is to use appropriate data for training so that similar words are close in the continuous space, thus obtaining better results for unseen n-grams.
+	The neural network language model embeds words in a\textbf{ continuous space}. The aim is to use appropriate data for training so that similar words are close in the continuous space, thus obtaining \textbf{better results for unseen n-grams}.
 \end{frame}
 
 \begin{frame}{Feed-forward NNLM architecture}
@@ -113,7 +118,7 @@ and $b_j$ and $k_i$ are the hidden and output layer \textbf{biases} respectively
 Computational complexity of this model is dominated by $HxN $ multiplications at the output layer.
 \newline
 \newline
-$\rightarrow$ \textbf{shortlist with only the most frequent words in vocabulary} is used at output targets to reduce output layer complexity.
+$\rightarrow$ \textbf{shortlist with only the most frequent words in vocabulary} is used as output targets to reduce output layer complexity.
 \newline
 \newline
 Since NNLM distributes the probability mass only to target words, a background language model is used for smoothing.
@@ -147,8 +152,10 @@ In the acoustic modeling community, DNNs have proven to be competitive with the 
     \item 977 utterances (18,279 words) as \textit{development set}.
     \item The rest as \textit{training set}.\\
 \end{itemize}
-
-Comparison with the state-of-the-art \textbf{model M language model}.
+The input vocabulary contains 20K words.
+\newline
+\newline
+Baseline model: state-of-the-art \textbf{model M language model}.
 \newline
 \newline
 After rescoring with a 4-gram language model trained on the same data, the \textbf{baseline WER} is $20.7\%$ on the held-out set and $22.3\%$ on the test set.
@@ -164,6 +171,8 @@ DNNLMs are trained on the baseline language model training text (900K sentences)
 \newline
 \newline
 The 10K most frequent words in the vocabulary are chosen as the output vocabulary ($96\%$ coverage of the test set).
+\newline
+The input vocabulary contains the same 20K words as the baseline model	.
 \newline
 \newline
 The probabilities for words outside the output vocabulary are smoothed using a 4-gram language model.
@@ -228,13 +237,13 @@ The DNN language models are evaluated via rescoring using 4-gram DNN language mo
 
 \begin{frame}{Conclusion}
 	\begin{itemize}
-		\item DNNLM show an improvement over shallow NNLM
-		\item DNNLM performances seem close to state of the art
-		\item DNNLM should be compared to RNNLM
+		\item DNNLM show some improvements over shallow NNLM
+		\item DNNLM performances seem close to state of the art model M
 		\item Further research is needed
 		\begin{itemize}
-			\item Behavior with higher projection layer dimension is unclear
+			\item NNLMs with bigger projection layer dimension perform well \\$\rightarrow$ \textit{are DDNLM really useful}?
 			\item Better pre-training and training strategies could be found
+			\item More comparisons between RNNLMs and DNNLMs
 		\end{itemize}
 	\end{itemize}
 \end{frame}
